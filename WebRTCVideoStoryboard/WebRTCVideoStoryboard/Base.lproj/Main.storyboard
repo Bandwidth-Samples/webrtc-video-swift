@@ -19,6 +19,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="7DP-kF-3So">
+                        <barButtonItem key="leftBarButtonItem" image="speaker.3" catalog="system" id="ovC-Zz-MCP">
+                            <connections>
+                                <action selector="speaker:" destination="BYZ-38-t0r" id="b2X-XE-aQE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Connect" id="JZp-H0-SQM">
                             <connections>
                                 <action selector="connect:" destination="BYZ-38-t0r" id="bIw-yK-LRU"/>
@@ -50,6 +55,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="speaker.3" catalog="system" width="128" height="86"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
