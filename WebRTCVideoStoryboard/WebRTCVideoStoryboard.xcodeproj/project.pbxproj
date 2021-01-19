@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		886C1DF425B76D7F00DADFE5 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 886C1DF325B76D7F00DADFE5 /* Config.plist */; };
 		88FB5AE425AF7089006E1009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB5AE325AF7089006E1009 /* AppDelegate.swift */; };
 		88FB5AE625AF7089006E1009 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB5AE525AF7089006E1009 /* SceneDelegate.swift */; };
 		88FB5AE825AF7089006E1009 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB5AE725AF7089006E1009 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		886C1DF325B76D7F00DADFE5 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		88FB5AE025AF7089006E1009 /* WebRTCVideoStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebRTCVideoStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FB5AE325AF7089006E1009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88FB5AE525AF7089006E1009 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				88FB5AEC25AF708D006E1009 /* Assets.xcassets */,
 				88FB5AEE25AF708D006E1009 /* LaunchScreen.storyboard */,
 				88FB5AF125AF708D006E1009 /* Info.plist */,
+				886C1DF325B76D7F00DADFE5 /* Config.plist */,
 			);
 			path = WebRTCVideoStoryboard;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				886C1DF425B76D7F00DADFE5 /* Config.plist in Resources */,
 				88FB5AF025AF708D006E1009 /* LaunchScreen.storyboard in Resources */,
 				88FB5AED25AF708D006E1009 /* Assets.xcassets in Resources */,
 				88FB5AEB25AF7089006E1009 /* Main.storyboard in Resources */,
