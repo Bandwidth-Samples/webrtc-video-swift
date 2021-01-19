@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             fatalError("Failed to load configuration data.")
         }
         
-        guard let address = configuration["address"] else {
+        guard let address = configuration["Address"] else {
             fatalError("Failed to load address.")
         }
         
@@ -40,6 +40,18 @@ class ViewController: UIViewController {
         return renderer
     }()
     
+    private var localRenderer: RTCVideoRenderer = {
+        #if arch(arm64)
+        let renderer = RTCMTLVideoView(frame: .zero)
+        renderer.videoContentMode = .scaleAspectFill
+        #else
+        let renderer = RTCEAGLVideoView(frame: .zero)
+        #endif
+        
+        renderer.backgroundColor = .systemGreen
+        return renderer
+    }()
+    
     private var stream: RTCMediaStream?
     private var speaker = false
     
@@ -47,6 +59,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         bandwidth.delegate = self
+        
         if let remoteRenderer = remoteRenderer as? UIView {
             view.addSubview(remoteRenderer)
             
@@ -56,29 +69,23 @@ class ViewController: UIViewController {
             remoteRenderer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             remoteRenderer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
+        
+        if let localRenderer = localRenderer as? UIView {
+            view.addSubview(localRenderer)
+            
+            localRenderer.translatesAutoresizingMaskIntoConstraints = false
+            localRenderer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.33).isActive = true
+            localRenderer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.33).isActive = true
+            localRenderer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            localRenderer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
     }
 
     @IBAction func connect(_ sender: Any) {
         startCall { token in
             try? self.bandwidth.connect(using: token) {
                 self.bandwidth.publish(audio: true, video: true, alias: "adam") {
-                    #if arch(arm64)
-                    let localRenderer = RTCMTLVideoView(frame: .zero)
-                    localRenderer.videoContentMode = .scaleAspectFill
-                    #else
-                    let localRenderer = RTCEAGLVideoView(frame: .zero)
-                    #endif
-                    
-                    self.bandwidth.captureLocalVideo(renderer: localRenderer)
-                    
-                    localRenderer.backgroundColor = .green
-                    self.view.addSubview(localRenderer)
-                    
-                    localRenderer.translatesAutoresizingMaskIntoConstraints = false
-                    localRenderer.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.33).isActive = true
-                    localRenderer.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.33).isActive = true
-                    localRenderer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-                    localRenderer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+                    self.bandwidth.captureLocalVideo(renderer: self.localRenderer)
                 }
             }
         }
