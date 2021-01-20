@@ -122,11 +122,11 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: RTCBandwidthDelegate {
-    func bandwidth(_ bandwidth: RTCBandwidth, streamAvailableAt connection: RTCBandwidthConnection, stream: RTCMediaStream?) {
-        self.stream = stream
+    func bandwidth(_ bandwidth: RTCBandwidth, streamAvailableAt endpointId: String, participantId: String, alias: String?, mediaTypes: [MediaType], mediaStream: RTCMediaStream?) {
+        self.stream = mediaStream
 
         DispatchQueue.main.async {
-            stream?.videoTracks.first?.add(self.remoteRenderer)
+            mediaStream?.videoTracks.first?.add(self.remoteRenderer)
         }
     }
 
