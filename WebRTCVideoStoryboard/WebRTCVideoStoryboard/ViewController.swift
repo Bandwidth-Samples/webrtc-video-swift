@@ -119,6 +119,15 @@ class ViewController: UIViewController {
             }
         }.resume()
     }
+                  let token = json["token"] as? String else {
+                fatalError("Failed to get media token from server application.")
+            }
+            
+            DispatchQueue.main.async {
+                completion(token)
+            }
+        }.resume()
+    }
 }
 
 extension ViewController: RTCBandwidthDelegate {

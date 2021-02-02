@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		886C1DF425B76D7F00DADFE5 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 886C1DF325B76D7F00DADFE5 /* Config.plist */; };
+		88E42CC625C9BD060048812B /* BandwidthWebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = 88E42CC525C9BD060048812B /* BandwidthWebRTC */; };
 		88FB5AE425AF7089006E1009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB5AE325AF7089006E1009 /* AppDelegate.swift */; };
 		88FB5AE625AF7089006E1009 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB5AE525AF7089006E1009 /* SceneDelegate.swift */; };
 		88FB5AE825AF7089006E1009 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB5AE725AF7089006E1009 /* ViewController.swift */; };
 		88FB5AEB25AF7089006E1009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FB5AE925AF7089006E1009 /* Main.storyboard */; };
 		88FB5AED25AF708D006E1009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88FB5AEC25AF708D006E1009 /* Assets.xcassets */; };
 		88FB5AF025AF708D006E1009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FB5AEE25AF708D006E1009 /* LaunchScreen.storyboard */; };
-		88FB5AFA25AF981F006E1009 /* BandwidthWebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = 88FB5AF925AF981F006E1009 /* BandwidthWebRTC */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88FB5AFA25AF981F006E1009 /* BandwidthWebRTC in Frameworks */,
+				88E42CC625C9BD060048812B /* BandwidthWebRTC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 			);
 			name = WebRTCVideoStoryboard;
 			packageProductDependencies = (
-				88FB5AF925AF981F006E1009 /* BandwidthWebRTC */,
+				88E42CC525C9BD060048812B /* BandwidthWebRTC */,
 			);
 			productName = WebRTCVideoStoryboard;
 			productReference = 88FB5AE025AF7089006E1009 /* WebRTCVideoStoryboard.app */;
@@ -119,7 +119,7 @@
 			);
 			mainGroup = 88FB5AD725AF7089006E1009;
 			packageReferences = (
-				88FB5AF825AF981F006E1009 /* XCRemoteSwiftPackageReference "webrtc-swift" */,
+				88E42CC425C9BD060048812B /* XCRemoteSwiftPackageReference "bandwidth-webrtc-swift" */,
 			);
 			productRefGroup = 88FB5AE125AF7089006E1009 /* Products */;
 			projectDirPath = "";
@@ -357,20 +357,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		88FB5AF825AF981F006E1009 /* XCRemoteSwiftPackageReference "webrtc-swift" */ = {
+		88E42CC425C9BD060048812B /* XCRemoteSwiftPackageReference "bandwidth-webrtc-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Bandwidth/webrtc-swift.git";
+			repositoryURL = "https://github.com/Bandwidth/bandwidth-webrtc-swift.git";
 			requirement = {
-				branch = dev;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		88FB5AF925AF981F006E1009 /* BandwidthWebRTC */ = {
+		88E42CC525C9BD060048812B /* BandwidthWebRTC */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 88FB5AF825AF981F006E1009 /* XCRemoteSwiftPackageReference "webrtc-swift" */;
+			package = 88E42CC425C9BD060048812B /* XCRemoteSwiftPackageReference "bandwidth-webrtc-swift" */;
 			productName = BandwidthWebRTC;
 		};
 /* End XCSwiftPackageProductDependency section */
