@@ -8,14 +8,14 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // config
-const port = 3000;
-const accountId = process.env.BANDWIDTH_ACCOUNT_ID;
+const port = process.env.LOCAL_PORT;
+const accountId = process.env.BW_ACCOUNT_ID;
 
 console.log("Starting server with account id:", accountId);
 
 // Global variables
-BandwidthWebRTC.Configuration.basicAuthUserName = process.env.BANDWIDTH_USERNAME;
-BandwidthWebRTC.Configuration.basicAuthPassword = process.env.BANDWIDTH_PASSWORD;
+BandwidthWebRTC.Configuration.basicAuthUserName = process.env.BW_USERNAME;
+BandwidthWebRTC.Configuration.basicAuthPassword = process.env.BW_PASSWORD;
 var webRTCController = BandwidthWebRTC.APIController;
 
 // track our session ID

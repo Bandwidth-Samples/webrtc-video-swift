@@ -34,9 +34,9 @@ cp .env.default .env
 
 Add your Bandwidth account settings to the new configuration file `.env`.
 
-- BANDWIDTH_ACCOUNT_ID
-- BANDWIDTH_USERNAME
-- BANDWIDTH_PASSWORD
+- BW_ACCOUNT_ID
+- BW_USERNAME
+- BW_PASSWORD
 
 Install server dependencies and run.
 
@@ -70,17 +70,17 @@ For more information about API credentials see [here](https://dev.bandwidth.com/
 # Environmental Variables
 
 The sample app uses the below environmental variables.
-```
-BANDWIDTH_ACCOUNT_ID                 // Your Bandwidth Account Id
-BANDWIDTH_USERNAME                   // Your Bandwidth API Username
-BANDWIDTH_PASSWORD                   // Your Bandwidth API Password
+```sh
+BW_ACCOUNT_ID                 # Your Bandwidth Account Id
+BW_USERNAME                   # Your Bandwidth API Username
+BW_PASSWORD                   # Your Bandwidth API Password
 ```
 
 ## Ngrok
 
 A simple way to set up a local URL for testing is to use the free tool [ngrok](https://ngrok.com/).  
-After you have downloaded and installed `ngrok` run the following command to open a public tunnel to your port (`$PORT`)
+After you have downloaded and installed `ngrok` run the following command to open a public tunnel to your port (`$LOCAL_PORT`)
 ```cmd
-ngrok http $PORT
+ngrok http $LOCAL_PORT
 ```
-You can view your public URL at `http://127.0.0.1:{PORT}` after ngrok is running. You can also view the status of the tunnel and requests/responses here.
+You can view your public URL at `http://127.0.0.1:{LOCAL_PORT}` after ngrok is running. You can also view the status of the tunnel and requests/responses here.
