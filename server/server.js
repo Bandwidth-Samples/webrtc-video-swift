@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // config
-const port = 3000;
+const port = process.env.LOCAL_PORT;
 const accountId = process.env.BW_ACCOUNT_ID;
 
 console.log("Starting server with account id:", accountId);
