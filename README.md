@@ -70,7 +70,7 @@ For more information about API credentials see [here](https://dev.bandwidth.com/
 # Environmental Variables
 
 The sample app uses the below environmental variables.
-```SH
+```sh
 BW_ACCOUNT_ID                 # Your Bandwidth Account Id
 BW_USERNAME                   # Your Bandwidth API Username
 BW_PASSWORD                   # Your Bandwidth API Password
