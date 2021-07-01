@@ -109,6 +109,7 @@ async function createParticipant(account_id, tag) {
   var participantBody = new BandwidthWebRTC.Participant({
     tag: tag,
     publishPermissions: ["AUDIO", "VIDEO"],
+    deviceApiVersion: 'V3'
   });
 
   try {
