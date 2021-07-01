@@ -68,6 +68,7 @@ class ViewController: UIViewController {
         
         bandwidth.delegate = self
         
+        // Add the remote renderer as a subview and set constraints.
         if let remoteRenderer = remoteRenderer as? UIView {
             view.addSubview(remoteRenderer)
             
@@ -78,6 +79,7 @@ class ViewController: UIViewController {
             remoteRenderer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
         
+        // Add the local renderer as a subview and set constraints.
         if let localRenderer = localRenderer as? UIView {
             view.addSubview(localRenderer)
             
