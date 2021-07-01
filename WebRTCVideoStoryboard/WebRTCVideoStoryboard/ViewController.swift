@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         let renderer = RTCEAGLVideoView()
         #endif
         
-        renderer.backgroundColor = .systemBlue
+        renderer.backgroundColor = .secondarySystemBackground
         return renderer
     }()
     
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         let renderer = RTCEAGLVideoView(frame: .zero)
         #endif
         
-        renderer.backgroundColor = .systemGreen
+        renderer.backgroundColor = .tertiarySystemBackground
         return renderer
     }()
     
@@ -92,35 +92,51 @@ class ViewController: UIViewController {
     }
 
     @IBAction func connect(_ sender: Any) {
-        startCall { token in
-            self.bandwidth.connect(using: token) { result in
-                switch result {
-                case .success:
-                    self.bandwidth.publish(alias: "sample") { stream in
-                        self.localVideoTrack = stream.mediaStream.videoTracks.first
-                        self.localVideoTrack?.add(self.localRenderer)
-                        
-                        self.capturer = RTCCameraVideoCapturer()
-                        self.capturer?.delegate = self.localVideoTrack?.source
-                        
-                        self.capture(device: self.devicePosition)
-                        
-                        self.isConnected = true
+        guard let button = sender as? UIBarButtonItem else {
+            return
+        }
+        
+        if isConnected {
+            bandwidth.disconnect()
+            
+            button.title = "Connect"
+            
+            isConnected = false
+        } else {
+            startCall { token in
+                self.bandwidth.connect(using: token) { result in
+                    switch result {
+                    case .success:
+                        self.bandwidth.publish(alias: "sample") { stream in
+                            self.localVideoTrack = stream.mediaStream.videoTracks.first
+                            self.localVideoTrack?.add(self.localRenderer)
+                            
+                            self.capturer = RTCCameraVideoCapturer()
+                            self.capturer?.delegate = self.localVideoTrack?.source
+                            
+                            self.capture(device: self.devicePosition)
+                            
+                            button.title = "Disconnect"
+                            
+                            self.isConnected = true
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
                     }
-                case .failure(let error):
-                    print(error.localizedDescription)
                 }
             }
         }
     }
     
     @IBAction func speaker(_ sender: Any) {
-        speaker.toggle()
-        
-        bandwidth.setSpeaker(speaker)
-        
-        let button = sender as? UIBarButtonItem
-        button?.image = UIImage(systemName: speaker ? "speaker.3.fill" : "speaker.3")
+        if isConnected {
+            speaker.toggle()
+            
+            bandwidth.setSpeaker(speaker)
+            
+            let button = sender as? UIBarButtonItem
+            button?.image = UIImage(systemName: speaker ? "speaker.3.fill" : "speaker.wave.3")
+        }
     }
     
     private func capture(device position: AVCaptureDevice.Position) {
